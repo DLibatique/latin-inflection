@@ -1,3 +1,5 @@
+import data
+
 class RegularVerb():
 
     # initialize with principal parts
@@ -25,46 +27,48 @@ class RegularVerb():
             conj = '3io'
 
         # no other conjugation markers met = 4th
-        else:
+        elif self.parts[1].endswith('ire'):
             conj = '4'
 
         return conj
 
+    # conjugate in the present tense, active or passive voice
     def pres_conj(self, passive=False):
 
         conjugatedVerbs = []
 
         # ending groups
-        pres_act = ['o','s','t','mus','tis','nt']
-        pres_pass = ['r', 'ris', 'tur', 'mur', 'mini', 'ntur']
+        pers_endings_act = ['o','s','t','mus','tis','nt']
+        pers_endings_pass = ['r', 'ris', 'tur', 'mur', 'mini', 'ntur']
+        pers_endings_act_m = ['m', 's', 't', 'mus', 'tis', 'nt']
 
         # 1st and 2nd conjugation
         if self.get_conj() in ['1', '2']:
             if not passive:
-                conjugatedVerbs = [self.parts[0]] + [self.parts[1][:-2] + x for x in pres_act[1:]]
+                conjugatedVerbs = [self.parts[0]] + [self.parts[1][:-2] + x for x in pers_endings_act[1:]]
             else:
-                conjugatedVerbs = [self.parts[0] + pres_pass[0]] + [self.parts[1][:-2] + x for x in pres_pass[1:]]
+                conjugatedVerbs = [self.parts[0] + pers_endings_pass[0]] + [self.parts[1][:-2] + x for x in pers_endings_pass[1:]]
 
         # 3rd conj
         elif self.get_conj() == '3':
-            if passive == False:
-                conjugatedVerbs = [self.parts[0]] + [self.parts[1][:-3] + 'i' + x for x in pres_act[1:5]] + [self.parts[1][:-3] + 'u' + pres_act[5]]
-            elif passive == True:
-                conjugatedVerbs = [self.parts[0] + pres_pass[0]] + [self.parts[1][:-3] + 'e' + pres_pass[1]] + [self.parts[1][:-3] + 'i' + x for x in pres_pass[2:5]] + [self.parts[1][:-3] + 'u' + pres_pass[5]]
+            if not passive:
+                conjugatedVerbs = [self.parts[0]] + [self.parts[1][:-3] + 'i' + x for x in pers_endings_act[1:5]] + [self.parts[1][:-3] + 'u' + pers_endings_act[5]]
+            else:
+                conjugatedVerbs = [self.parts[0] + pers_endings_pass[0]] + [self.parts[1][:-3] + 'e' + pers_endings_pass[1]] + [self.parts[1][:-3] + 'i' + x for x in pers_endings_pass[2:5]] + [self.parts[1][:-3] + 'u' + pers_endings_pass[5]]
 
         # 3rd io
         elif self.get_conj() == '3io':
-                if passive == False:
-                    conjugatedVerbs = [self.parts[0]] + [self.parts[1][:-3] + 'i' + x for x in pres_act[1:5]] + [self.parts[1][:-3] + 'iu' + pres_act[5]]
-                elif passive == True:
-                    conjugatedVerbs = [self.parts[0] + pres_pass[0]] + [self.parts[1][:-3] + 'e' + pres_pass[1]] + [self.parts[1][:-3] + 'i' + x for x in pres_pass[2:5]] + [self.parts[1][:-3] + 'iu' + pres_pass[5]]
+            if not passive:
+                conjugatedVerbs = [self.parts[0]] + [self.parts[1][:-3] + 'i' + x for x in pers_endings_act[1:5]] + [self.parts[1][:-3] + 'iu' + pers_endings_act[5]]
+            else:
+                conjugatedVerbs = [self.parts[0] + pers_endings_pass[0]] + [self.parts[1][:-3] + 'e' + pers_endings_pass[1]] + [self.parts[1][:-3] + 'i' + x for x in pers_endings_pass[2:5]] + [self.parts[1][:-3] + 'iu' + pers_endings_pass[5]]
 
         # 4th
         elif self.get_conj() == '4':
             if passive == False:
-                conjugatedVerbs = [self.parts[0]] + [self.parts[1][:-2] + x for x in pres_act[1:5]] + [self.parts[1][:-2] + 'u' + pres_act[5]]
+                conjugatedVerbs = [self.parts[0]] + [self.parts[1][:-2] + x for x in pers_endings_act[1:5]] + [self.parts[1][:-2] + 'u' + pers_endings_act[5]]
             elif passive == True:
-                conjugatedVerbs = [self.parts[0] + pres_pass[0]] + [self.parts[1][:-2] + x for x in pres_pass[1:5]] + [self.parts[1][:-2] + 'u' + pres_pass[5]]
+                conjugatedVerbs = [self.parts[0] + pers_endings_pass[0]] + [self.parts[1][:-2] + x for x in pers_endings_pass[1:5]] + [self.parts[1][:-2] + 'u' + pers_endings_pass[5]]
 
         return conjugatedVerbs
 
@@ -92,3 +96,5 @@ for v in verbs:
     print(v.get_conj())
     print(v.pres_conj())
     print(v.pres_conj(True))
+
+print(RegularVerb(['promitto', 'promittere', 'promisi', 'promissus']).pres_conj(False)[5])
