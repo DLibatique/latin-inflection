@@ -1,47 +1,68 @@
-class RegularVerb:
+import data
 
+class RegularVerb():
+
+    # initialize with principal parts
     def __init__(self, parts):
-        self.parts = parts
+        self.parts = parts # should be list
 
     def get_conj(self):
-        while False:
-            '''
-                test for variable endings
-                add 1 to conj, etc; recursive function
-            '''
+
+        conj = ''
+
+        # infinitive ends in -are = 1st conj
+        if self.parts[1].endswith('are'):
+            conj = '1'
+
+        # 1st pp ends in -eo and 2nd ends in -ere = 2nd conj
+        elif self.parts[0].endswith('eo') and self.parts[1].endswith('ere'):
+            conj = '2'
+
+        # 1st pp ends in neither -io nor -eo and 2nd ends in -ere = 3rd
+        elif not self.parts[0].endswith('eo') and not self.parts[0].endswith('io') and self.parts[1].endswith('ere'):
+            conj = '3'
+
+        # 1st pp ends in -io and 2nd ends in -ere = 3rd io
+        elif self.parts[0].endswith('io') and self.parts[1].endswith('ere'):
+            conj = '3io'
+
+        # no other conjugation markers met = 4th
+        else:
+            conj = '4'
+
         return conj
 
-    def pres_conj(passive=False):
+    def pres_conj(self, passive=False):
 
-        conj = self.get_conj(self.parts)
+        conjugatedVerbs = []
 
         # ending groups
         pres_act = ['o','s','t','mus','tis','nt']
         pres_pass = ['r', 'ris', 'tur', 'mur', 'mini', 'ntur']
 
         # 1st and 2nd conjugation
-        if conj == '1' or conj == '2':
-            if passive == False:
+        if self.get_conj() in ['1', '2']:
+            if not passive:
                 conjugatedVerbs = [self.parts[0]] + [self.parts[1][:-2] + x for x in pres_act[1:]]
-            elif passive == True:
+            else:
                 conjugatedVerbs = [self.parts[0] + pres_pass[0]] + [self.parts[1][:-2] + x for x in pres_pass[1:]]
 
         # 3rd conj
-        elif conj == '3':
+        elif self.get_conj() == '3':
             if passive == False:
                 conjugatedVerbs = [self.parts[0]] + [self.parts[1][:-3] + 'i' + x for x in pres_act[1:5]] + [self.parts[1][:-3] + 'u' + pres_act[5]]
             elif passive == True:
                 conjugatedVerbs = [self.parts[0] + pres_pass[0]] + [self.parts[1][:-3] + 'e' + pres_pass[1]] + [self.parts[1][:-3] + 'i' + x for x in pres_pass[2:5]] + [self.parts[1][:-3] + 'u' + pres_pass[5]]
 
         # 3rd io
-        elif conj == '3io':
+        elif self.get_conj() == '3io':
                 if passive == False:
                     conjugatedVerbs = [self.parts[0]] + [self.parts[1][:-3] + 'i' + x for x in pres_act[1:5]] + [self.parts[1][:-3] + 'iu' + pres_act[5]]
                 elif passive == True:
                     conjugatedVerbs = [self.parts[0] + pres_pass[0]] + [self.parts[1][:-3] + 'e' + pres_pass[1]] + [self.parts[1][:-3] + 'i' + x for x in pres_pass[2:5]] + [self.parts[1][:-3] + 'iu' + pres_pass[5]]
 
         # 4th
-        elif conj == '4':
+        elif self.get_conj() == '4':
             if passive == False:
                 conjugatedVerbs = [self.parts[0]] + [self.parts[1][:-2] + x for x in pres_act[1:5]] + [self.parts[1][:-2] + 'u' + pres_act[5]]
             elif passive == True:
@@ -59,95 +80,17 @@ class RegularVerb:
 4th: 2nd principal part ends in -ire
 '''
 
-moneo = RegularVerb(['moneo', 'monere', 'monui', 'monitus'])
-
-print(moneo.pres_conj(2))
-
-'''
-new code above
-old code below
-'''
-
-do = ['do', 'dare', 'dedi', 'datus']
+laudo = ['laudo', 'laudare', 'laudavi', 'laudatus']
+moneo = ['moneo', 'monere', 'monui', 'monitus']
+rego = ['rego', 'regere', 'rexi', 'rectus']
 capio = ['capio', 'capere', 'cepi', 'captus']
 audio = ['audio', 'audire', 'audivi', 'auditus']
-rego = ['rego', 'regere', 'rexi', 'rectus']
+timeo = ['timeo', 'timere', 'timui']
 
-def pres_conj(verb, conj, passive=False):
+verbs = [laudo, moneo, rego, capio, audio, timeo]
 
-    # ending groups
-    pres_act = ['o','s','t','mus','tis','nt']
-    pres_pass = ['r', 'ris', 'tur', 'mur', 'mini', 'ntur']
-
-    # 1st and 2nd conjugation
-    if conj == '1' or conj == '2':
-        if passive == False:
-            conjugatedVerbs = [verb[0]] + [verb[1][:-2] + x for x in pres_act[1:]]
-        elif passive == True:
-            conjugatedVerbs = [verb[0] + pres_pass[0]] + [verb[1][:-2] + x for x in pres_pass[1:]]
-
-    # 3rd conj
-    elif conj == '3':
-        if passive == False:
-            conjugatedVerbs = [verb[0]] + [verb[1][:-3] + 'i' + x for x in pres_act[1:5]] + [verb[1][:-3] + 'u' + pres_act[5]]
-        elif passive == True:
-            conjugatedVerbs = [verb[0] + pres_pass[0]] + [verb[1][:-3] + 'e' + pres_pass[1]] + [verb[1][:-3] + 'i' + x for x in pres_pass[2:5]] + [verb[1][:-3] + 'u' + pres_pass[5]]
-
-    # 3rd io
-    elif conj == '3io':
-            if passive == False:
-                conjugatedVerbs = [verb[0]] + [verb[1][:-3] + 'i' + x for x in pres_act[1:5]] + [verb[1][:-3] + 'iu' + pres_act[5]]
-            elif passive == True:
-                conjugatedVerbs = [verb[0] + pres_pass[0]] + [verb[1][:-3] + 'e' + pres_pass[1]] + [verb[1][:-3] + 'i' + x for x in pres_pass[2:5]] + [verb[1][:-3] + 'iu' + pres_pass[5]]
-
-    # 4th
-    elif conj == '4':
-        if passive == False:
-            conjugatedVerbs = [verb[0]] + [verb[1][:-2] + x for x in pres_act[1:5]] + [verb[1][:-2] + 'u' + pres_act[5]]
-        elif passive == True:
-            conjugatedVerbs = [verb[0] + pres_pass[0]] + [verb[1][:-2] + x for x in pres_pass[1:5]] + [verb[1][:-2] + 'u' + pres_pass[5]]
-
-    return conjugatedVerbs
-
-def impf_conj(verb, conj, passive=False):
-
-    # ending groups
-    impf_act = ['bam','bas','bat','bamus','batis','bant']
-    impf_pass = ['bar', 'baris', 'batur', 'bamur', 'bamini', 'bantur']
-
-    # 1st 2nd or 3rd conj
-    if conj == '1' or conj=='2' or conj=='3':
-        if passive == False:
-            conjugatedVerbs = [verb[1][:-2] + x for x in impf_act]
-        elif passive == True:
-            conjugatedVerbs = [verb[1][:-2] + x for x in impf_pass]
-
-    # 3rd io or 4th
-    elif conj == '3io' or conj=='4':
-        if passive == False:
-            conjugatedVerbs = [verb[1][:-3] + 'ie' + x for x in impf_act]
-        elif passive == True:
-            conjugatedVerbs = [verb[1][:-3] + 'ie' + x for x in impf_pass]
-
-    return conjugatedVerbs
-
-# print(pres_act_conj(do,pres_act))
-# print(pres_pass_conj(do,pres_pass))
-# print(impf_fut_conj(do,impf_act))
-# print(impf_fut_conj(do,fut_act_1_2))
-
-    # fut_act = ['bo','bis','bit','bimus','bitis','bunt']
-    # fut_pass = ['bor', 'beris', 'bitur', 'bimur', 'bimini', 'buntur']
-    #         else:
-    #             conjugatedVerbs = [verb[1][:-2] + x for x in fut_pass]
-    #                     elif passive==False and impf==False:
-    #                         conjugatedVerbs = [verb[1][:-2] + x for x in fut_act]
-
-print(impf_conj(do,'2'))
-print(impf_conj(capio,'3io',True))
-print(impf_conj(capio,'3io'))
-print(pres_conj(audio,'4'))
-print(pres_conj(capio,'3io',True))
-print(pres_conj(rego,'3',True))
-print(pres_conj(rego,'3'))
-print(impf_conj(audio,'4',True))
+for v in verbs:
+    v = RegularVerb(v)
+    print(v.get_conj())
+    print(v.pres_conj())
+    print(v.pres_conj(True))
