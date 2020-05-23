@@ -1,3 +1,16 @@
+from dataclasses import dataclass
+
+@dataclass
+class regularVerb:
+    first: str
+    second: str
+    third: str
+    fourth: str
+
+moneo = regularVerb('moneo', 'monere', 'monui', 'monitus')
+
+print(moneo)
+
 do = ['do', 'dare', 'dedi', 'datus']
 capio = ['capio', 'capere', 'cepi', 'captus']
 audio = ['audio', 'audire', 'audivi', 'auditus']
