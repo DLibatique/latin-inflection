@@ -1,21 +1,77 @@
-from dataclasses import dataclass
+class RegularVerb:
 
-@dataclass
-class regularVerb:
-    first: str
-    second: str
-    third: str
-    fourth: str
+    def __init__(self, parts):
+        self.parts = parts
 
-moneo = regularVerb('moneo', 'monere', 'monui', 'monitus')
+    def get_conj(self):
+        while False:
+            '''
+                test for variable endings
+                add 1 to conj, etc; recursive function
+            '''
+        return conj
 
-print(moneo)
+    def pres_conj(passive=False):
+
+        conj = self.get_conj(self.parts)
+
+        # ending groups
+        pres_act = ['o','s','t','mus','tis','nt']
+        pres_pass = ['r', 'ris', 'tur', 'mur', 'mini', 'ntur']
+
+        # 1st and 2nd conjugation
+        if conj == '1' or conj == '2':
+            if passive == False:
+                conjugatedVerbs = [self.parts[0]] + [self.parts[1][:-2] + x for x in pres_act[1:]]
+            elif passive == True:
+                conjugatedVerbs = [self.parts[0] + pres_pass[0]] + [self.parts[1][:-2] + x for x in pres_pass[1:]]
+
+        # 3rd conj
+        elif conj == '3':
+            if passive == False:
+                conjugatedVerbs = [self.parts[0]] + [self.parts[1][:-3] + 'i' + x for x in pres_act[1:5]] + [self.parts[1][:-3] + 'u' + pres_act[5]]
+            elif passive == True:
+                conjugatedVerbs = [self.parts[0] + pres_pass[0]] + [self.parts[1][:-3] + 'e' + pres_pass[1]] + [self.parts[1][:-3] + 'i' + x for x in pres_pass[2:5]] + [self.parts[1][:-3] + 'u' + pres_pass[5]]
+
+        # 3rd io
+        elif conj == '3io':
+                if passive == False:
+                    conjugatedVerbs = [self.parts[0]] + [self.parts[1][:-3] + 'i' + x for x in pres_act[1:5]] + [self.parts[1][:-3] + 'iu' + pres_act[5]]
+                elif passive == True:
+                    conjugatedVerbs = [self.parts[0] + pres_pass[0]] + [self.parts[1][:-3] + 'e' + pres_pass[1]] + [self.parts[1][:-3] + 'i' + x for x in pres_pass[2:5]] + [self.parts[1][:-3] + 'iu' + pres_pass[5]]
+
+        # 4th
+        elif conj == '4':
+            if passive == False:
+                conjugatedVerbs = [self.parts[0]] + [self.parts[1][:-2] + x for x in pres_act[1:5]] + [self.parts[1][:-2] + 'u' + pres_act[5]]
+            elif passive == True:
+                conjugatedVerbs = [self.parts[0] + pres_pass[0]] + [self.parts[1][:-2] + x for x in pres_pass[1:5]] + [self.parts[1][:-2] + 'u' + pres_pass[5]]
+
+        return conjugatedVerbs
+
+
+
+'''
+1st: 2nd principal part ends in -are
+2nd: 1st principal part ends in -eo, 2nd principal part ends in -ere
+3rd: 1st principal part ends in -o, 2nd principal part ends in -ere
+3rd io: 1st principal part ends in -io, 2nd principal part ends in -ere
+4th: 2nd principal part ends in -ire
+'''
+
+moneo = RegularVerb(['moneo', 'monere', 'monui', 'monitus'])
+
+print(moneo.pres_conj(2))
+
+'''
+new code above
+old code below
+'''
 
 do = ['do', 'dare', 'dedi', 'datus']
 capio = ['capio', 'capere', 'cepi', 'captus']
 audio = ['audio', 'audire', 'audivi', 'auditus']
 rego = ['rego', 'regere', 'rexi', 'rectus']
-
 
 def pres_conj(verb, conj, passive=False):
 
