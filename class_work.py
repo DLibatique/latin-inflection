@@ -1,4 +1,4 @@
-import data
+from data import *
 
 class RegularVerb():
 
@@ -97,4 +97,8 @@ for v in verbs:
     print(v.pres_conj())
     print(v.pres_conj(True))
 
-print(RegularVerb(['promitto', 'promittere', 'promisi', 'promissus']).pres_conj(False)[5])
+dcc_verbs = [accedo, accido, accipio, addo, adduco, adhibeo, advenio, adverto, afficio, agito, ago, alo, amitto, amo, aperio, appareo, appello, ardeo, ascendo, aspicio, audeo, audio, augeo, cado, caedo, cano, capio, careo, caveo, cedo, celebro, censeo, cerno, certo, cingo, claudo, cogito, cognosco, cogo, colligo, colo, committo, comparo, compono, concedo, condo, conficio, consisto, constituo, consto, consulo, consumo, contemno, contineo, contingo, convenio, converto, corrumpo, credo, creo, cresco, cupio, curo, curro, damno, debeo, decerno, deduco, defendo, deficio, descendo, desero, desidero, desino, dico, diligo, dimitto, discedo, disco, divido, do, doceo, doleo, dono, dormio, dubito, duco, edico, edo, educo, efficio, effundo, eligo, eripio, erro, excipio, exerceo, exigo, existimo, exspecto, facio, fallo, fingo, fleo, fluo, frango, fugio, fugo, fundo, gaudeo, gero, gigno, habeo, iaceo, iacio, impero, impleo, impono, incido, incipio, indico, instituo, intellego, intendo, interficio, interrogo, intro, invenio, iubeo, iudico, iungo, iuro, iuvo, laboro, laedo, lateo, laudo, lego, maneo, mereo, metuo, misceo, mitto, moneo, moveo, muto, narro, nego, nescio, noceo, nosco, occido, occupo, occurro, opto, oro, ostendo, parco, pareo, pario, paro, pateo, pecco, pello, pendo, perdo, pergo, permitto, pertineo, pervenio, peto, placeo, pono, porto, posco, praebeo, praecipio, praesto, premo, probo, procedo, prodo, prohibeo, promitto, propero, propono, pugno, puto, quaero, quiesco, rapio, recedo, recipio, reddo, rego, relinquo, reperio, repeto, respicio, respondeo, retineo, reverto, revoco, rideo, rogo, rumpo, scio, scribo, sedeo, sentio, servio, servo, sino, soleo, solvo, sono, spargo, specto, spero, statuo, sto, studeo, sumo, supero, surgo, suscipio, sustineo, taceo, tango, tego, tempto, tendo, teneo, terreo, timeo, trado, traho, turbo, vaco, valeo, veho, venio, verto, veto, video, vinco, vito, vivo, voco]
+
+for d in dcc_verbs:
+    d = RegularVerb(d)
+    print(d.pres_conj())
