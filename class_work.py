@@ -1,5 +1,3 @@
-import data
-
 class RegularVerb():
 
     # initialize with principal parts
