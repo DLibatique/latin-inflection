@@ -13,5 +13,5 @@ python3 app.py
 Test for lengths and values
 
 ```
-python3 test.py
+python3 -m unittest discover
 ```
