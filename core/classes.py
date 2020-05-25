@@ -1,13 +1,13 @@
-class Verb:
+class RegularVerb:
 
-    def __init__(self, verbs: dict):
+    def __init__(self, parts: dict):
         """
         Initializing the Verb class
 
                 Parameters:
-                        `verbs` (list): list of verbs
+                        `parts` (list): list of principal parts
         """
-        self.verbs = verbs
+        self.parts = parts
 
     def __conj_1(self) -> bool:
         """
@@ -15,7 +15,7 @@ class Verb:
 
                 Returns: Boolean
         """
-        return any(x.endswith('are') for x in self.verbs)
+        return any(x.endswith('are') for x in self.parts)
 
     def __conj_2(self) -> bool:
         """
@@ -24,7 +24,7 @@ class Verb:
 
                 Returns: Boolean
         """
-        return any(x.endswith('eo') for x in self.verbs) and any(x.endswith('ere') for x in self.verbs)
+        return any(x.endswith('eo') for x in self.parts) and any(x.endswith('ere') for x in self.parts)
 
     def __conj_3(self) -> bool:
         """
@@ -34,7 +34,7 @@ class Verb:
 
                 Returns: Boolean
         """
-        return any(x.endswith('ere') for x in self.verbs) and not any(x.endswith('eo') for x in self.verbs) and not any(x.endswith('io') for x in self.verbs)
+        return any(x.endswith('ere') for x in self.parts) and not any(x.endswith('eo') for x in self.parts) and not any(x.endswith('io') for x in self.parts)
 
     def __conj_3io(self) -> bool:
         """
@@ -43,7 +43,7 @@ class Verb:
 
                 Returns: Boolean
         """
-        return any(x.endswith('io') for x in self.verbs) and any(x.endswith('ere') for x in self.verbs)
+        return any(x.endswith('io') for x in self.parts) and any(x.endswith('ere') for x in self.parts)
 
     def __conj_4(self) -> bool:
         """
@@ -51,7 +51,7 @@ class Verb:
 
                 Returns: Boolean
         """
-        return any(x.endswith('ire') for x in self.verbs)
+        return any(x.endswith('ire') for x in self.parts)
 
     def get_conjugation(self) -> str:
         """
@@ -62,13 +62,13 @@ class Verb:
         """
         return '1' if self.__conj_1() else ('2' if self.__conj_2() else ('3' if self.__conj_3() else ('3io' if self.__conj_3io() else '4')))
 
-    def present_tense(self, is_indicative: bool, passive: bool) -> list:
+    def present_tense(self, is_indicative: bool, is_active: bool) -> list:
         """
         Return present tense of all words in a list, based on:
 
                 Parameters:
                         `is_indicative` (bool): indicative (or subjunctive) mood
-                        `is_passive` (bool): passive (or active) voice
+                        `is_active` (bool): active (or passive) voice
 
                 Returns:
                         `conjugated_verbs` (list): converted verb list
@@ -86,30 +86,30 @@ class Verb:
 
             # 1st and 2nd conjugation
             if self.get_conjugation() in ['1', '2']:
-                if not passive:
+                if is_active:
                     conjugated_verbs = [self.parts[0]] + [self.parts[1][:-2] + x for x in personal_endings_act[1:]]
                 else:
                     conjugated_verbs = [self.parts[0] + personal_endings_pass[0]] + [self.parts[1][:-2] + x for x in personal_endings_pass[1:]]
 
             # 3rd conj
             elif self.get_conjugation() == '3':
-                if not passive:
+                if is_active:
                     conjugated_verbs = [self.parts[0]] + [self.parts[1][:-3] + 'i' + x for x in personal_endings_act[1:5]] + [self.parts[1][:-3] + 'u' + personal_endings_act[5]]
                 else:
                     conjugated_verbs = [self.parts[0] + personal_endings_pass[0]] + [self.parts[1][:-3] + 'e' + personal_endings_pass[1]] + [self.parts[1][:-3] + 'i' + x for x in personal_endings_pass[2:5]] + [self.parts[1][:-3] + 'u' + personal_endings_pass[5]]
 
             # 3rd io
             elif self.get_conjugation() == '3io':
-                if not passive:
+                if is_active:
                     conjugated_verbs = [self.parts[0]] + [self.parts[1][:-3] + 'i' + x for x in personal_endings_act[1:5]] + [self.parts[1][:-3] + 'iu' + personal_endings_act[5]]
                 else:
                     conjugated_verbs = [self.parts[0] + personal_endings_pass[0]] + [self.parts[1][:-3] + 'e' + personal_endings_pass[1]] + [self.parts[1][:-3] + 'i' + x for x in personal_endings_pass[2:5]] + [self.parts[1][:-3] + 'iu' + personal_endings_pass[5]]
 
             # 4th
             elif self.get_conjugation() == '4':
-                if passive == False:
+                if is_active:
                     conjugated_verbs = [self.parts[0]] + [self.parts[1][:-2] + x for x in personal_endings_act[1:5]] + [self.parts[1][:-2] + 'u' + personal_endings_act[5]]
-                elif passive == True:
+                else:
                     conjugated_verbs = [self.parts[0] + personal_endings_pass[0]] + [self.parts[1][:-2] + x for x in personal_endings_pass[1:5]] + [self.parts[1][:-2] + 'u' + personal_endings_pass[5]]
 
         # subjunctive mood
@@ -122,17 +122,17 @@ class Verb:
                 ("4", "ia"),
             )
 
-            conjugated_verbs = [f'{self.verbs[1][:-3]}{subjunctive[self.get_conjugation()]}' + x for x in (personal_endings_act_m if not passive else personal_endings_pass)]
+            conjugated_verbs = [f'{self.parts[1][:-3]}{subjunctive[int(self.get_conjugation()) - 1][1]}' + x for x in (personal_endings_act_m if is_active else personal_endings_pass)]
 
         return conjugated_verbs
 
-    def imperfect_tense(self, is_indicative: bool, passive: bool) -> list:
+    def imperfect_tense(self, is_indicative: bool, is_active: bool) -> list:
         """
         Return the imperfect tense of all words in a list, based on:
 
                 Parameters:
                         `is_indicative` (bool): indicative (or subjunctive) mood
-                        `is_passive` (bool): passive (or active) voice
+                        `is_active` (bool): active (or passive) voice
 
                 Returns:
                         `conjugated_verbs` (list): converted verb list
@@ -150,6 +150,6 @@ class Verb:
         else:
             prefix = self.parts[1]
 
-        conjugated_verbs = [prefix + x for x in (personal_endings_pass if passive else personal_endings_act)]
+        conjugated_verbs = [prefix + x for x in (personal_endings_act if is_active else personal_endings_pass)]
 
         return conjugated_verbs
