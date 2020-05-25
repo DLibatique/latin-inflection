@@ -89,5 +89,17 @@ class TestConjugation(unittest.TestCase):
 
         # 4th conj
 
+        # present
+        self.assertEqual(RegularVerb(['audio', 'audire']).present_tense(True, True), ['audio', 'audis', 'audit', 'audimus', 'auditis', 'audiunt']) # pres ind act
+        self.assertEqual(RegularVerb(['audio', 'audire']).present_tense(False, True), ['audiam', 'audias', 'audiat', 'audiamus', 'audiatis', 'audiant']) # pres subj act
+        self.assertEqual(RegularVerb(['audio', 'audire']).present_tense(True, False), ['audior', 'audiris', 'auditur', 'audimur', 'audimini', 'audiuntur']) # pres ind pass
+        self.assertEqual(RegularVerb(['audio', 'audire']).present_tense(False, False), ['audiar', 'audiaris', 'audiatur', 'audiamur', 'audiamini', 'audiantur']) # pres subj pass
+
+        # imperfect
+        self.assertEqual(RegularVerb(['audio', 'audire']).imperfect_tense(True, True), ['audiebam', 'audiebas', 'audiebat', 'audiebamus', 'audiebatis', 'audiebant']) # impf ind act
+        self.assertEqual(RegularVerb(['audio', 'audire']).imperfect_tense(False, True), ['audirem', 'audires', 'audiret', 'audiremus', 'audiretis', 'audirent']) # impf subj act
+        self.assertEqual(RegularVerb(['audio', 'audire']).imperfect_tense(True, False), ['audiebar', 'audiebaris', 'audiebatur', 'audiebamur', 'audiebamini', 'audiebantur']) # impf ind pass
+        self.assertEqual(RegularVerb(['audio', 'audire']).imperfect_tense(False, False), ['audirer', 'audireris', 'audiretur', 'audiremur', 'audiremini', 'audirentur']) # impf subj pass
+
 if __name__ == "__main__":
     unittest.main()
