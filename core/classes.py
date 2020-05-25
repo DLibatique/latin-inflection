@@ -115,7 +115,7 @@ class RegularVerb:
         # subjunctive mood
         else:
             subjunctive = {
-                "1": "e",
+                "1": "e", # conjugation: present subjunctive vowel change
                 "2": "ea",
                 "3": "a",
                 "3io": "ia",
