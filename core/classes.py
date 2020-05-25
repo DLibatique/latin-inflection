@@ -145,11 +145,11 @@ class RegularVerb:
 
         # indicative mood
         if is_indicative:
-            prefix = f'{self.parts[1][:-2]}ba' if self.get_conjugation() in ['1', '2', '3'] else f'{self.parts[1][:-2]}ieba'
+            stem = f'{self.parts[1][:-2]}ba' if self.get_conjugation() in ['1', '2', '3'] else f'{self.parts[1][:-2]}ieba'
         # subjunctive mood
         else:
-            prefix = self.parts[1]
+            stem = self.parts[1]
 
-        conjugated_verbs = [prefix + x for x in (personal_endings_act if is_active else personal_endings_pass)]
+        conjugated_verbs = [stem + x for x in (personal_endings_act if is_active else personal_endings_pass)]
 
         return conjugated_verbs
