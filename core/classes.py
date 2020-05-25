@@ -153,3 +153,46 @@ class RegularVerb:
         conjugated_verbs = [stem + x for x in (personal_endings_act if is_active else personal_endings_pass)]
 
         return conjugated_verbs
+
+    def future_tense(self, is_active: bool) -> list:
+        """
+        Return future tense of a regular verb, based on:
+
+                Parameters:
+                        `is_active` (bool): active (or passive) voice
+
+                Returns:
+                        `conjugated_verbs` (list): conjugated verb list
+        """
+
+        # ending groups
+        personal_endings_act_1_2 = ['bo','bis','bit','bimus','bitis','bunt']
+        personal_endings_pass_1_2 = ['bor', 'beris', 'bitur', 'bimur', 'bimini', 'buntur']
+
+        personal_endings_act_3_4 = ['am', 'es', 'et', 'emus', 'etis', 'ent']
+        personal_endings_pass_3_4 = ['ar', 'eris', 'etur', 'emur', 'emini', 'entur']
+
+        conjugated_verbs = []
+
+        # 1st and 2nd conjugation
+        if self.get_conjugation() in ['1', '2']:
+            if is_active:
+                conjugated_verbs = [self.parts[1][:-2] + x for x in personal_endings_act_1_2]
+            else:
+                conjugated_verbs = [self.parts[1][:-2] + x for x in personal_endings_pass_1_2]
+
+        # 3rd conj
+        elif self.get_conjugation() == '3':
+            if is_active:
+                conjugated_verbs = [self.parts[1][:-3] + x for x in personal_endings_act_3_4]
+            else:
+                conjugated_verbs = [self.parts[1][:-3] + x for x in personal_endings_pass_3_4]
+
+        # 3rd io and 4th
+        else:
+            if is_active:
+                conjugated_verbs = [f'{self.parts[1][:-3]}i' + x for x in personal_endings_act_3_4]
+            else:
+                conjugated_verbs = [f'{self.parts[1][:-3]}i' + x for x in personal_endings_pass_3_4]
+
+        return conjugated_verbs

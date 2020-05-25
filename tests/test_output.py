@@ -42,6 +42,10 @@ class TestConjugation(unittest.TestCase):
         self.assertEqual(RegularVerb(['amo', 'amare']).imperfect_tense(True, False), ['amabar', 'amabaris', 'amabatur', 'amabamur', 'amabamini', 'amabantur']) # impf ind pass
         self.assertEqual(RegularVerb(['amo', 'amare']).imperfect_tense(False, False), ['amarer', 'amareris', 'amaretur', 'amaremur', 'amaremini', 'amarentur']) # impf subj pass
 
+        # future
+        self.assertEqual(RegularVerb(['amo', 'amare']).future_tense(True), ['amabo', 'amabis', 'amabit', 'amabimus', 'amabitis', 'amabunt']) # fut ind act
+        self.assertEqual(RegularVerb(['amo', 'amare']).future_tense(False), ['amabor', 'amaberis', 'amabitur', 'amabimur', 'amabimini', 'amabuntur']) # fut ind pass
+
         # 2nd conj
 
         # present
@@ -55,6 +59,10 @@ class TestConjugation(unittest.TestCase):
         self.assertEqual(RegularVerb(['moneo', 'monere']).imperfect_tense(False, True), ['monerem', 'moneres', 'moneret', 'moneremus', 'moneretis', 'monerent']) # impf subj act
         self.assertEqual(RegularVerb(['moneo', 'monere']).imperfect_tense(True, False), ['monebar', 'monebaris', 'monebatur', 'monebamur', 'monebamini', 'monebantur']) # impf ind pass
         self.assertEqual(RegularVerb(['moneo', 'monere']).imperfect_tense(False, False), ['monerer', 'monereris', 'moneretur', 'moneremur', 'moneremini', 'monerentur']) # impf subj pass
+
+        # future
+        self.assertEqual(RegularVerb(['moneo', 'monere']).future_tense(True), ['monebo', 'monebis', 'monebit', 'monebimus', 'monebitis', 'monebunt']) # fut ind act
+        self.assertEqual(RegularVerb(['moneo', 'monere']).future_tense(False), ['monebor', 'moneberis', 'monebitur', 'monebimur', 'monebimini', 'monebuntur']) # fut ind pass
 
         # 3rd conj
 
@@ -70,6 +78,10 @@ class TestConjugation(unittest.TestCase):
         self.assertEqual(RegularVerb(['rego', 'regere']).imperfect_tense(True, False), ['regebar', 'regebaris', 'regebatur', 'regebamur', 'regebamini', 'regebantur']) # impf ind pass
         self.assertEqual(RegularVerb(['rego', 'regere']).imperfect_tense(False, False), ['regerer', 'regereris', 'regeretur', 'regeremur', 'regeremini', 'regerentur']) # impf subj pass
 
+        # future
+        self.assertEqual(RegularVerb(['rego', 'regere']).future_tense(True), ['regam', 'reges', 'reget', 'regemus', 'regetis', 'regent']) # fut ind act
+        self.assertEqual(RegularVerb(['rego', 'regere']).future_tense(False), ['regar', 'regeris', 'regetur', 'regemur', 'regemini', 'regentur']) # fut ind pass
+
         # 3rd io conj
 
         # present
@@ -84,6 +96,10 @@ class TestConjugation(unittest.TestCase):
         self.assertEqual(RegularVerb(['capio', 'capere']).imperfect_tense(True, False), ['capiebar', 'capiebaris', 'capiebatur', 'capiebamur', 'capiebamini', 'capiebantur']) # impf ind pass
         self.assertEqual(RegularVerb(['capio', 'capere']).imperfect_tense(False, False), ['caperer', 'capereris', 'caperetur', 'caperemur', 'caperemini', 'caperentur']) # impf subj pass
 
+        # future
+        self.assertEqual(RegularVerb(['capio', 'capere']).future_tense(True), ['capiam', 'capies', 'capiet', 'capiemus', 'capietis', 'capient']) # fut ind act
+        self.assertEqual(RegularVerb(['capio', 'capere']).future_tense(False), ['capiar', 'capieris', 'capietur', 'capiemur', 'capiemini', 'capientur']) # fut ind pass
+
         # 4th conj
 
         # present
@@ -97,6 +113,10 @@ class TestConjugation(unittest.TestCase):
         self.assertEqual(RegularVerb(['audio', 'audire']).imperfect_tense(False, True), ['audirem', 'audires', 'audiret', 'audiremus', 'audiretis', 'audirent']) # impf subj act
         self.assertEqual(RegularVerb(['audio', 'audire']).imperfect_tense(True, False), ['audiebar', 'audiebaris', 'audiebatur', 'audiebamur', 'audiebamini', 'audiebantur']) # impf ind pass
         self.assertEqual(RegularVerb(['audio', 'audire']).imperfect_tense(False, False), ['audirer', 'audireris', 'audiretur', 'audiremur', 'audiremini', 'audirentur']) # impf subj pass
+
+        # future
+        self.assertEqual(RegularVerb(['audio', 'audire']).future_tense(True), ['audiam', 'audies', 'audiet', 'audiemus', 'audietis', 'audient']) # fut ind act
+        self.assertEqual(RegularVerb(['audio', 'audire']).future_tense(False), ['audiar', 'audieris', 'audietur', 'audiemur', 'audiemini', 'audientur']) # fut ind pass
 
 if __name__ == "__main__":
     unittest.main()
