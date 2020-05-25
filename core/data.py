@@ -42,7 +42,7 @@ VERB_LIST = [
     ['premo', 'premere', 'pressi', 'pressus'], # 240
     ['soleo', 'solere', 'solui', 'solitus'], # 246
     ['cogo', 'cogere', 'coegi', 'coactus'], # 250
-    ['audeo', 'audere', 'ausus', 'sus'], # 270
+    ['audeo', 'audere', 'ausus sum', ], # 270
     ['rapio', 'rapere', 'rapui', 'raptus'], # 273
     ['placeo', 'placere', 'placui', 'placitus'], # 287
     ['verto', 'vertere', 'verti', 'versus'], # 288
@@ -70,7 +70,7 @@ VERB_LIST = [
     ['doceo', 'docere', 'docui', 'doctus'], # 393
     ['excipio', 'excipere', 'excepi', 'exceptus'], # 394
     ['erro', 'errare', 'erravi', 'erratus'], # 402
-    ['gaudeo', 'gaudere', 'gavisus', 'sus'], # 407
+    ['gaudeo', 'gaudere', 'gavisus sum'], # 407
     ['pervenio', 'pervenire', 'perveni', 'perventus'], # 409
     ['incipio', 'incipere', 'incepi', 'inceptus'], # 411
     ['parco', 'parcere', 'peperci', 'parsus'], # 412
