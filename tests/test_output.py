@@ -24,7 +24,7 @@ class TestConjugation(unittest.TestCase):
 
         check_length = lambda x, i: self.assertEqual(len(RegularVerb(x).get_conjugation()), 6)
 
-        self. assertTrue(all(check_length for x, i in data))
+        self.assertTrue(all(check_length for x, i in data))
 
     def test_conjugation_outputs(self):
 
