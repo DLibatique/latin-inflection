@@ -43,7 +43,7 @@ class RegularVerb:
 
                 Returns: Boolean
         """
-        return not any(x.endswith('eo') for x in self.parts) and not any(x.endswith('io') for x in self.parts) and any(x.endswith('ere') for x in self.parts)
+        return not any(x.endswith('eo') for x in self.parts) and any(x.endswith('ere') for x in self.parts)
 
     def __conj_4(self) -> bool:
         """
