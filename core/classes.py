@@ -5,7 +5,7 @@ class RegularVerb:
         Initializing the Verb class
 
                 Parameters:
-                        `parts` (list): list of principal parts
+                        `parts` (list of str): list of principal parts
         """
         self.parts = parts
 
