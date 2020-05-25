@@ -29,6 +29,14 @@ class TestConjugation(unittest.TestCase):
         laudo = ['laudo', 'laudare', 'laudavi', 'laudatus']
         self.assertEqual(len(RegularVerb(laudo).present_tense(True, True)), 6)
 
+        ### LOOK HERE
+        self.assertEqual(RegularVerb(['intellego', 'intellegere']).imperfect_tense(True, False), ['intellegebar', 'intellegebaris', 'intellegebatur', 'intellegebamur', 'intellegebamini', 'intellegebantur'])
+
+    def test_conjugation_output(self):
+
+        do = ['do', 'dare', 'dedi', 'datus']
+        self.assertEqual(RegularVerb(do).present_tense(True, True), ['do', 'das', 'dat', 'damus', 'datis', 'dant'])
+
 
 if __name__ == "__main__":
     unittest.main()
