@@ -1,15 +1,8 @@
 from core.classes import RegularVerb
 from core.data import *
 
-print(RegularVerb(['do', 'dare', 'dedi', 'datus']).present_tense(True, True))
-print(RegularVerb(['do', 'dare', 'dedi', 'datus']).present_tense(True, False))
-print(RegularVerb(['do', 'dare', 'dedi', 'datus']).present_tense(False, True))
-print(RegularVerb(['do', 'dare', 'dedi', 'datus']).present_tense(False, False))
-
-print(RegularVerb(['do', 'dare', 'dedi', 'datus']).imperfect_tense(True, True))
-print(RegularVerb(['do', 'dare', 'dedi', 'datus']).imperfect_tense(True, False))
-print(RegularVerb(['do', 'dare', 'dedi', 'datus']).imperfect_tense(False, True))
-print(RegularVerb(['do', 'dare', 'dedi', 'datus']).imperfect_tense(False, False))
-
-for x in VERB_LIST:
-    print(str(x) + ': ' + RegularVerb(x).get_conjugation())
+print(RegularVerb(VERB_LIST[0]).present_tense('ind', True))
+print(RegularVerb(VERB_LIST[15]).present_tense('subj', False))
+print(RegularVerb(VERB_LIST[33]).imperfect_tense(True, False))
+print(RegularVerb(VERB_LIST[81]).imperfect_tense(False, True))
+print(RegularVerb(VERB_LIST[100]).future_tense(False))
