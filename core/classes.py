@@ -62,12 +62,12 @@ class RegularVerb:
         """
         return '1' if self.__conj_1() else ('2' if self.__conj_2() else ('3' if self.__conj_3() else ('3io' if self.__conj_3io() else '4')))
 
-    def present_tense(self, is_indicative: bool, is_active: bool) -> list:
+    def present_tense(self, mood: str, is_active: bool) -> list:
         """
         Return present tense of a regular verb, based on:
 
                 Parameters:
-                        `is_indicative` (bool): indicative (or subjunctive) mood
+                        `mood` (str): 'ind'(idcative), 'subj'(unctive), or 'imp'(erative) mood
                         `is_active` (bool): active (or passive) voice
 
                 Returns:
@@ -82,7 +82,7 @@ class RegularVerb:
         conjugated_verbs = []
 
         # indicative mood
-        if is_indicative:
+        if mood == 'ind':
 
             # 1st and 2nd conjugation
             if self.get_conjugation() in ['1', '2']:
@@ -113,7 +113,8 @@ class RegularVerb:
                     conjugated_verbs = [self.parts[0] + personal_endings_pass[0]] + [self.parts[1][:-2] + x for x in personal_endings_pass[1:5]] + [self.parts[1][:-2] + 'u' + personal_endings_pass[5]]
 
         # subjunctive mood
-        else:
+        elif mood == 'subj':
+
             subjunctive = {
                 "1": "e", # conjugation: present subjunctive vowel change
                 "2": "ea",
@@ -123,6 +124,9 @@ class RegularVerb:
             }
 
             conjugated_verbs = [f'{self.parts[1][:-3]}{subjunctive[self.get_conjugation()]}' + x for x in (personal_endings_act_m if is_active else personal_endings_pass)]
+
+        else: # imperative mood
+            pass
 
         return conjugated_verbs
 
