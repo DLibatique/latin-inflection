@@ -1,6 +1,6 @@
 class RegularVerb:
 
-    def __init__(self, parts: dict):
+    def __init__(self, parts: list):
         """
         Initializing the Verb class
 
@@ -64,14 +64,14 @@ class RegularVerb:
 
     def present_tense(self, is_indicative: bool, is_active: bool) -> list:
         """
-        Return present tense of all words in a list, based on:
+        Return present tense of a regular verb, based on:
 
                 Parameters:
                         `is_indicative` (bool): indicative (or subjunctive) mood
                         `is_active` (bool): active (or passive) voice
 
                 Returns:
-                        `conjugated_verbs` (list): converted verb list
+                        `conjugated_verbs` (list): conjugated verb list
         """
 
         # ending groups
@@ -128,14 +128,14 @@ class RegularVerb:
 
     def imperfect_tense(self, is_indicative: bool, is_active: bool) -> list:
         """
-        Return the imperfect tense of all words in a list, based on:
+        Return the imperfect tense of a regular verb, based on:
 
                 Parameters:
                         `is_indicative` (bool): indicative (or subjunctive) mood
                         `is_active` (bool): active (or passive) voice
 
                 Returns:
-                        `conjugated_verbs` (list): converted verb list
+                        `conjugated_verbs` (list): conjugated verb list
         """
         conjugated_verbs = []
 
