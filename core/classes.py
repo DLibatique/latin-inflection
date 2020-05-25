@@ -139,7 +139,7 @@ class RegularVerb:
                 if is_active:
                     conjugated_verbs = [f'{self.parts[1][:-2]}', f'{self.parts[1][:-2]}te']
                 else:
-                    pass
+                    return 'The passive imperative exists mostly in deponent verbs.'
 
             # 3rd, 3rd io conj
             elif self.get_conjugation() in ['3', '3io']:
@@ -147,12 +147,12 @@ class RegularVerb:
                     if is_active:
                         conjugated_verbs = [f'{self.parts[1][:-3]}', f'{self.parts[1][:-3]}ite']
                     else:
-                        pass
+                        return 'The passive imperative exists mostly in deponent verbs.'
                 else:
                     if is_active:
                         conjugated_verbs = [f'{self.parts[1][:-2]}', f'{self.parts[1][:-3]}ite']
                     else:
-                        pass
+                        return 'The passive imperative exists mostly in deponent verbs.'
 
         return conjugated_verbs
 

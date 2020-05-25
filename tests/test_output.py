@@ -37,6 +37,7 @@ class TestConjugation(unittest.TestCase):
         self.assertEqual(RegularVerb(data[0][0]).present_tense('ind', False), ['amor', 'amaris', 'amatur', 'amamur', 'amamini', 'amantur']) # pres ind pass
         self.assertEqual(RegularVerb(data[0][0]).present_tense('subj', False), ['amer', 'ameris', 'ametur', 'amemur', 'amemini', 'amentur']) # pres subj pass
         self.assertEqual(RegularVerb(data[0][0]).present_tense('imp', True), ['ama', 'amate']) # pres imp act
+        self.assertEqual(RegularVerb(data[0][0]).present_tense('imp', False), 'The passive imperative exists mostly in deponent verbs.') # pres imp act
 
         # imperfect
         self.assertEqual(RegularVerb(data[0][0]).imperfect_tense(True, True), ['amabam', 'amabas', 'amabat', 'amabamus', 'amabatis', 'amabant']) # impf ind act
@@ -56,6 +57,7 @@ class TestConjugation(unittest.TestCase):
         self.assertEqual(RegularVerb(data[1][0]).present_tense('ind', False), ['moneor', 'moneris', 'monetur', 'monemur', 'monemini', 'monentur']) # pres ind pass
         self.assertEqual(RegularVerb(data[1][0]).present_tense('subj', False), ['monear', 'monearis', 'moneatur', 'moneamur', 'moneamini', 'moneantur']) # pres subj pass
         self.assertEqual(RegularVerb(data[1][0]).present_tense('imp', True), ['mone', 'monete']) # pres imp act
+        self.assertEqual(RegularVerb(data[1][0]).present_tense('imp', False), 'The passive imperative exists mostly in deponent verbs.') # pres imp act
 
         # imperfect
         self.assertEqual(RegularVerb(data[1][0]).imperfect_tense(True, True), ['monebam', 'monebas', 'monebat', 'monebamus', 'monebatis', 'monebant']) # impf ind act
@@ -75,6 +77,7 @@ class TestConjugation(unittest.TestCase):
         self.assertEqual(RegularVerb(data[2][0]).present_tense('ind', False), ['regor', 'regeris', 'regitur', 'regimur', 'regimini', 'reguntur']) # pres ind pass
         self.assertEqual(RegularVerb(data[2][0]).present_tense('subj', False), ['regar', 'regaris', 'regatur', 'regamur', 'regamini', 'regantur']) # pres subj pass
         self.assertEqual(RegularVerb(data[2][0]).present_tense('imp', True), ['rege', 'regite']) # pres imp act
+        self.assertEqual(RegularVerb(data[2][0]).present_tense('imp', False), 'The passive imperative exists mostly in deponent verbs.') # pres imp act
         self.assertEqual(RegularVerb(['dico', 'dicere', 'dixi', 'dictus']).present_tense('imp', True), ['dic', 'dicite']) # pres imp act, irregular
         self.assertEqual(RegularVerb(['duco', 'ducere', 'duxi', 'ductus']).present_tense('imp', True), ['duc', 'ducite']) # pres imp act, irregular
 
@@ -96,6 +99,7 @@ class TestConjugation(unittest.TestCase):
         self.assertEqual(RegularVerb(data[3][0]).present_tense('ind', False), ['capior', 'caperis', 'capitur', 'capimur', 'capimini', 'capiuntur']) # pres ind pass
         self.assertEqual(RegularVerb(data[3][0]).present_tense('subj', False), ['capiar', 'capiaris', 'capiatur', 'capiamur', 'capiamini', 'capiantur']) # pres subj pass
         self.assertEqual(RegularVerb(data[3][0]).present_tense('imp', True), ['cape', 'capite']) # pres imp act
+        self.assertEqual(RegularVerb(data[3][0]).present_tense('imp', False), 'The passive imperative exists mostly in deponent verbs.') # pres imp act
         self.assertEqual(RegularVerb(['facio', 'facere', 'feci', 'factus']).present_tense('imp', True), ['fac', 'facite']) # pres imp act, irregular
 
         # imperfect
@@ -116,6 +120,7 @@ class TestConjugation(unittest.TestCase):
         self.assertEqual(RegularVerb(data[4][0]).present_tense('ind', False), ['audior', 'audiris', 'auditur', 'audimur', 'audimini', 'audiuntur']) # pres ind pass
         self.assertEqual(RegularVerb(data[4][0]).present_tense('subj', False), ['audiar', 'audiaris', 'audiatur', 'audiamur', 'audiamini', 'audiantur']) # pres subj pass
         self.assertEqual(RegularVerb(data[4][0]).present_tense('imp', True), ['audi', 'audite']) # pres imp act
+        self.assertEqual(RegularVerb(data[4][0]).present_tense('imp', False), 'The passive imperative exists mostly in deponent verbs.') # pres imp act
 
         # imperfect
         self.assertEqual(RegularVerb(data[4][0]).imperfect_tense(True, True), ['audiebam', 'audiebas', 'audiebat', 'audiebamus', 'audiebatis', 'audiebant']) # impf ind act
