@@ -126,7 +126,33 @@ class RegularVerb:
             conjugated_verbs = [f'{self.parts[1][:-3]}{subjunctive[self.get_conjugation()]}' + x for x in (personal_endings_act_m if is_active else personal_endings_pass)]
 
         else: # imperative mood
-            pass
+
+            irregular_imperatives = [
+                ['dico', 'dicere', 'dixi', 'dictus'],
+                ['duco', 'ducere', 'duxi', 'ductus'],
+                ['facio', 'facere', 'feci', 'factus']
+                # ['fero', 'ferre', 'tuli', 'latus'] ---> include in irregular verbs
+            ]
+
+            # 1st, 2nd, 4th conj
+            if self.get_conjugation() in ['1', '2', '4']:
+                if is_active:
+                    conjugated_verbs = [f'{self.parts[1][:-2]}', f'{self.parts[1][:-2]}te']
+                else:
+                    pass
+
+            # 3rd, 3rd io conj
+            elif self.get_conjugation() in ['3', '3io']:
+                if self.parts in irregular_imperatives:
+                    if is_active:
+                        conjugated_verbs = [f'{self.parts[1][:-3]}', f'{self.parts[1][:-3]}ite']
+                    else:
+                        pass
+                else:
+                    if is_active:
+                        conjugated_verbs = [f'{self.parts[1][:-2]}', f'{self.parts[1][:-3]}ite']
+                    else:
+                        pass
 
         return conjugated_verbs
 

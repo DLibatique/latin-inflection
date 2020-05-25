@@ -9,6 +9,7 @@ data = [
     (['capio', 'capere', 'cepi', 'captus'], "3io"),
     (['audio', 'audire', 'audivi', 'auditus'], "4"),
     (['timeo', 'timere', 'timui'], "2"),
+    (['impero', 'imperare'], "1")
 ]
 
 
@@ -35,6 +36,7 @@ class TestConjugation(unittest.TestCase):
         self.assertEqual(RegularVerb(['amo', 'amare']).present_tense('subj', True), ['amem', 'ames', 'amet', 'amemus', 'ametis', 'ament']) # pres subj act
         self.assertEqual(RegularVerb(['amo', 'amare']).present_tense('ind', False), ['amor', 'amaris', 'amatur', 'amamur', 'amamini', 'amantur']) # pres ind pass
         self.assertEqual(RegularVerb(['amo', 'amare']).present_tense('subj', False), ['amer', 'ameris', 'ametur', 'amemur', 'amemini', 'amentur']) # pres subj pass
+        self.assertEqual(RegularVerb(['amo', 'amare']).present_tense('imp', True), ['ama', 'amate']) # pres imp act
 
         # imperfect
         self.assertEqual(RegularVerb(['amo', 'amare']).imperfect_tense(True, True), ['amabam', 'amabas', 'amabat', 'amabamus', 'amabatis', 'amabant']) # impf ind act
@@ -53,6 +55,7 @@ class TestConjugation(unittest.TestCase):
         self.assertEqual(RegularVerb(['moneo', 'monere']).present_tense('subj', True), ['moneam', 'moneas', 'moneat', 'moneamus', 'moneatis', 'moneant']) # pres subj act
         self.assertEqual(RegularVerb(['moneo', 'monere']).present_tense('ind', False), ['moneor', 'moneris', 'monetur', 'monemur', 'monemini', 'monentur']) # pres ind pass
         self.assertEqual(RegularVerb(['moneo', 'monere']).present_tense('subj', False), ['monear', 'monearis', 'moneatur', 'moneamur', 'moneamini', 'moneantur']) # pres subj pass
+        self.assertEqual(RegularVerb(['moneo', 'monere']).present_tense('imp', True), ['mone', 'monete']) # pres imp act
 
         # imperfect
         self.assertEqual(RegularVerb(['moneo', 'monere']).imperfect_tense(True, True), ['monebam', 'monebas', 'monebat', 'monebamus', 'monebatis', 'monebant']) # impf ind act
@@ -71,6 +74,9 @@ class TestConjugation(unittest.TestCase):
         self.assertEqual(RegularVerb(['rego', 'regere']).present_tense('subj', True), ['regam', 'regas', 'regat', 'regamus', 'regatis', 'regant']) # pres subj act
         self.assertEqual(RegularVerb(['rego', 'regere']).present_tense('ind', False), ['regor', 'regeris', 'regitur', 'regimur', 'regimini', 'reguntur']) # pres ind pass
         self.assertEqual(RegularVerb(['rego', 'regere']).present_tense('subj', False), ['regar', 'regaris', 'regatur', 'regamur', 'regamini', 'regantur']) # pres subj pass
+        self.assertEqual(RegularVerb(['rego', 'regere']).present_tense('imp', True), ['rege', 'regite']) # pres imp act
+        self.assertEqual(RegularVerb(['dico', 'dicere', 'dixi', 'dictus']).present_tense('imp', True), ['dic', 'dicite']) # pres imp act, irregular
+        self.assertEqual(RegularVerb(['duco', 'ducere', 'duxi', 'ductus']).present_tense('imp', True), ['duc', 'ducite']) # pres imp act, irregular
 
         # imperfect
         self.assertEqual(RegularVerb(['rego', 'regere']).imperfect_tense(True, True), ['regebam', 'regebas', 'regebat', 'regebamus', 'regebatis', 'regebant']) # impf ind act
@@ -89,6 +95,8 @@ class TestConjugation(unittest.TestCase):
         self.assertEqual(RegularVerb(['capio', 'capere']).present_tense('subj', True), ['capiam', 'capias', 'capiat', 'capiamus', 'capiatis', 'capiant']) # pres subj act
         self.assertEqual(RegularVerb(['capio', 'capere']).present_tense('ind', False), ['capior', 'caperis', 'capitur', 'capimur', 'capimini', 'capiuntur']) # pres ind pass
         self.assertEqual(RegularVerb(['capio', 'capere']).present_tense('subj', False), ['capiar', 'capiaris', 'capiatur', 'capiamur', 'capiamini', 'capiantur']) # pres subj pass
+        self.assertEqual(RegularVerb(['capio', 'capere']).present_tense('imp', True), ['cape', 'capite']) # pres imp act
+        self.assertEqual(RegularVerb(['facio', 'facere', 'feci', 'factus']).present_tense('imp', True), ['fac', 'facite']) # pres imp act, irregular
 
         # imperfect
         self.assertEqual(RegularVerb(['capio', 'capere']).imperfect_tense(True, True), ['capiebam', 'capiebas', 'capiebat', 'capiebamus', 'capiebatis', 'capiebant']) # impf ind act
@@ -107,6 +115,7 @@ class TestConjugation(unittest.TestCase):
         self.assertEqual(RegularVerb(['audio', 'audire']).present_tense('subj', True), ['audiam', 'audias', 'audiat', 'audiamus', 'audiatis', 'audiant']) # pres subj act
         self.assertEqual(RegularVerb(['audio', 'audire']).present_tense('ind', False), ['audior', 'audiris', 'auditur', 'audimur', 'audimini', 'audiuntur']) # pres ind pass
         self.assertEqual(RegularVerb(['audio', 'audire']).present_tense('subj', False), ['audiar', 'audiaris', 'audiatur', 'audiamur', 'audiamini', 'audiantur']) # pres subj pass
+        self.assertEqual(RegularVerb(['audio', 'audire']).present_tense('imp', True), ['audi', 'audite']) # pres imp act
 
         # imperfect
         self.assertEqual(RegularVerb(['audio', 'audire']).imperfect_tense(True, True), ['audiebam', 'audiebas', 'audiebat', 'audiebamus', 'audiebatis', 'audiebant']) # impf ind act
