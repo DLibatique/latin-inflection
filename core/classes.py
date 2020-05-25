@@ -1,14 +1,3 @@
-from enum import Enum
-
-
-subjunctive = (
-    (1, "e"),
-    (2, "ea"),
-    (3, "a"),
-    (4, "ia"),
-)
-
-
 class Verb:
 
     def __init__(self, verbs: dict):
@@ -125,6 +114,14 @@ class Verb:
 
         # subjunctive mood
         else:
+            subjunctive = (
+                ("1", "e"),
+                ("2", "ea"),
+                ("3", "a"),
+                ("3io", "ia"),
+                ("4", "ia"),
+            )
+
             conjugated_verbs = [f'{self.verbs[1][:-3]}{subjunctive[self.get_conjugation()]}' + x for x in (personal_endings_act_m if not passive else personal_endings_pass)]
 
         return conjugated_verbs
