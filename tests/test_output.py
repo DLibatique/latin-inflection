@@ -2,34 +2,31 @@ import unittest
 from core.classes import RegularVerb
 
 
+data = [
+    (['laudo', 'laudare', 'laudavi', 'laudatus'], "1"),
+    (['moneo', 'monere', 'monui', 'monitus'], "2"),
+    (['rego', 'regere', 'rexi', 'rectus'], "3"),
+    (['capio', 'capere', 'cepi', 'captus'], "3io"),
+    (['audio', 'audire', 'audivi', 'auditus'], "4"),
+    (['timeo', 'timere', 'timui'], "2"),
+]
+
+
 class TestConjugation(unittest.TestCase):
 
     def test_conjugation_types(self):
 
-        laudo = ['laudo', 'laudare', 'laudavi', 'laudatus']
-        self.assertEqual(RegularVerb(laudo).get_conjugation(), "1")
+        check_assertion = lambda x, i: self.assertEqual(RegularVerb(x).get_conjugation(), i)
 
-        moneo = ['moneo', 'monere', 'monui', 'monitus']
-        self.assertEqual(RegularVerb(moneo).get_conjugation(), "2")
+        self.assertTrue(all(check_assertion for x, i in data))
 
-        rego = ['rego', 'regere', 'rexi', 'rectus']
-        self.assertEqual(RegularVerb(rego).get_conjugation(), "3")
+    def test_conjugation_lengths(self):
 
-        capio = ['capio', 'capere', 'cepi', 'captus']
-        self.assertEqual(RegularVerb(capio).get_conjugation(), "3io")
+        check_length = lambda x, i: self.assertEqual(len(RegularVerb(x).get_conjugation()), 6)
 
-        audio = ['audio', 'audire', 'audivi', 'auditus']
-        self.assertEqual(RegularVerb(audio).get_conjugation(), "4")
+        self. assertTrue(all(check_length for x, i in data))
 
-        timeo = ['timeo', 'timere', 'timui']
-        self.assertEqual(RegularVerb(timeo).get_conjugation(), "2")
-
-    def test_conjugation_length(self):
-
-        laudo = ['laudo', 'laudare', 'laudavi', 'laudatus']
-        self.assertEqual(len(RegularVerb(laudo).present_tense(True, True)), 6)
-
-    def test_conjugation_output(self):
+    def test_conjugation_outputs(self):
 
         # 1st conj
 
