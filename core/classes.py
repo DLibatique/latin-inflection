@@ -34,7 +34,7 @@ class RegularVerb:
 
                 Returns: Boolean
         """
-        return any(x.endswith('ere') for x in self.parts) and not any(x.endswith('eo') for x in self.parts) and not any(x.endswith('io') for x in self.parts)
+        return not any(x.endswith('eo') for x in self.parts) and not any(x.endswith('io') for x in self.parts) and any(x.endswith('ere') for x in self.parts)
 
     def __conj_3io(self) -> bool:
         """
@@ -145,7 +145,7 @@ class RegularVerb:
 
         # indicative mood
         if is_indicative:
-            stem = f'{self.parts[1][:-2]}ba' if self.get_conjugation() in ['1', '2', '3'] else f'{self.parts[1][:-2]}ieba'
+            stem = f'{self.parts[1][:-2]}ba' if self.get_conjugation() in ['1', '2', '3'] else f'{self.parts[1][:-3]}ieba'
         # subjunctive mood
         else:
             stem = self.parts[1]
