@@ -27,10 +27,10 @@ VERB_LIST = [
     ['vivo', 'vivere', 'vixi', 'victus'], # 156
     ['voco', 'vocare', 'vocavi', 'vocatus'], # 158
     ['paro', 'parare', 'paravi', 'paratus'], # 160
-    ['audio', 'audire', 'audivi/audii', 'auditus'], # 165
+    ['audio', 'audire', 'audiv-/audii', 'auditus'], # 165
     ['puto', 'putare', 'putavi', 'putatus'], # 166
     ['sto', 'stare', 'steti', 'status'], # 168
-    ['scio', 'scire', 'scivi/scii', 'scitus'], # 172
+    ['scio', 'scire', 'sciv-/scii', 'scitus'], # 172
     ['reddo', 'reddere', 'reddidi', 'redditus'], # 174
     ['fugio', 'fugere', 'fugi', 'fugitus'], # 177
     ['moveo', 'movere', 'movi', 'motus'], # 192
@@ -106,7 +106,7 @@ VERB_LIST = [
     ['cogito', 'cogitare', 'cogitavi', 'cogitatus'], # 515
     ['dubito', 'dubitare', 'dubitavi', 'dubitatus'], # 521
     ['fundo', 'fundere', 'fudi', 'fusus'], # 523
-    ['nescio', 'nescire', 'nescivi/nescii', 'nescitus'], # 525
+    ['nescio', 'nescire', 'nesciv-/nescii', 'nescitus'], # 525
     ['tendo', 'tendere', 'tetendi', 'tentus'], # 529
     ['spargo', 'spargere', 'sparsi', 'sparsus'], # 532
     ['tango', 'tangere', 'tetigi', 'tactus'], # 534
@@ -216,7 +216,7 @@ VERB_LIST = [
     ['incido', 'incidere', 'incidi', 'incasus'], # 871
     ['rideo', 'ridere', 'risi', 'risus'], # 874
     ['vito', 'vitare', 'vitavi', 'vitatus'], # 881
-    ['servio', 'servire', 'servivi/servii', 'servitus'], # 883
+    ['servio', 'servire', 'serviv-/servii', 'servitus'], # 883
     ['adduco', 'adducere', 'adduxi', 'adductus'], # 886
     ['comparo', 'comparare', 'comparavi', 'comparatus'], # 890
     ['desidero', 'desiderare', 'desideravi', 'desideratus'], # 892
@@ -242,7 +242,7 @@ VERB_LIST = [
     ['adhibeo', 'adhibere', 'adhibui', 'adhibitus'], # 959
     ['quiesco', 'quiescere', 'quievi', 'quietus'], # 969
     ['diligo', 'diligere', 'dilexi', 'dilectus'], # 973
-    ['dormio', 'dormire', 'dormivi/dormii', 'dormitus'], # 975
+    ['dormio', 'dormire', 'dormiv-/dormii', 'dormitus'], # 975
     ['creo', 'creare', 'creavi', 'creatus'], # 978
     ['indico', 'indicare', 'indicavi', 'indicatus'], # 980
     ['adverto', 'advertere', 'adverti', 'adversus'], # 986
