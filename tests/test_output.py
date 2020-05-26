@@ -148,5 +148,10 @@ class TestConjugation(unittest.TestCase):
         self.assertEqual(RegularVerb(data[4][0]).future_tense(True), ['audiam', 'audies', 'audiet', 'audiemus', 'audietis', 'audient']) # fut ind act
         self.assertEqual(RegularVerb(data[4][0]).future_tense(False), ['audiar', 'audieris', 'audietur', 'audiemur', 'audiemini', 'audientur']) # fut ind pass
 
+        # infinitives
+        self.assertEqual(RegularVerb(['rego', 'regere', 'rexi', 'rectus']).get_infinitives(), ['regere', 'regi', 'rexisse', 'rectus esse', 'recturus esse', 'rectum iri']) # all 4 parts, completely regular
+        self.assertEqual(RegularVerb(['gaudeo', 'gaudere', 'gavisus sum', None]).get_infinitives(), ['gaudere', 'gauderi', None, 'gavisus esse', 'gavisurus esse', 'gavisum iri']) # semi-deponent
+        self.assertEqual(RegularVerb(['timeo', 'timere', 'timui', None]).get_infinitives(), ['timere', 'timeri', 'timuisse', None, None, None]) # missing 4th pp, regular 3rd pp
+
 if __name__ == "__main__":
     unittest.main()
