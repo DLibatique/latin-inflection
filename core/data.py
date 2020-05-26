@@ -22,7 +22,7 @@ VERB_LIST = [
     ['capio', 'capere', 'cepi', 'captus'], # 131
     ['duco', 'ducere', 'duxi', 'ductus'], # 133
     ['relinquo', 'relinquere', 'reliqui', 'relictus'], # 144
-    ['timeo', 'timere', 'timui'], # 153
+    ['timeo', 'timere', 'timui', None], # 153
     ['debeo', 'debere', 'debui', 'debitus'], # 155
     ['vivo', 'vivere', 'vixi', 'victus'], # 156
     ['voco', 'vocare', 'vocavi', 'vocatus'], # 158
@@ -78,7 +78,7 @@ VERB_LIST = [
     ['lego', 'legere', 'legi', 'lectus'], # 419
     ['praesto', 'praestare', 'praestiti', 'praestitus'], # 423
     ['misceo', 'miscere', 'miscui', 'mixtus'], # 425
-    ['metuo', 'metuere', 'metui', ], # 429
+    ['metuo', 'metuere', 'metui', None], # 429
     ['tempto', 'temptare', 'temptavi', 'temptatus'], # 430
     ['addo', 'addere', 'addidi', 'additus'], # 433
     ['laudo', 'laudare', 'laudavi', 'laudatus'], # 435
@@ -88,13 +88,13 @@ VERB_LIST = [
     ['compono', 'componere', 'composui', 'compositus'], # 443
     ['sumo', 'sumere', 'sumpsi', 'sumptus'], # 454
     ['fleo', 'flere', 'flevi', 'fletus'], # 457
-    ['disco', 'discere', 'didici', ], # 465
+    ['disco', 'discere', 'didici', None], # 465
     ['occupo', 'occupare', 'occupavi', 'occupatus'], # 472
     ['specto', 'spectare', 'spectavi', 'spectatus'], # 473
     ['rumpo', 'rumpere', 'rupi', 'ruptus'], # 480
     ['aspicio', 'aspicere', 'aspexi', 'aspectus'], # 483
     ['amitto', 'amittere', 'amisi', 'amissus'], # 486
-    ['posco', 'poscere', 'poposci', ], # 487
+    ['posco', 'poscere', 'poposci', None], # 487
     ['perdo', 'perdere', 'perdidi', 'perditus'], # 488
     ['contingo', 'contingere', 'contigi', 'contactus'], # 494
     ['exigo', 'exigere', 'exegi', 'exactus'], # 500
@@ -115,7 +115,7 @@ VERB_LIST = [
     ['valeo', 'valere', 'valui', 'valitus'], # 539
     ['condo', 'condere', 'condidi', 'conditus'], # 540
     ['desero', 'deserere', 'deserui', 'desertus'], # 544
-    ['pateo', 'patere', 'patui', ], # 550
+    ['pateo', 'patere', 'patui', None], # 550
     ['rogo', 'rogare', 'rogavi', 'rogatus'], # 551
     ['rego', 'regere', 'rexi', 'rectus'], # 554
     ['curro', 'currere', 'cucurri', 'cursus'], # 562
@@ -158,7 +158,7 @@ VERB_LIST = [
     ['occurro', 'occurrere', 'occucurri', 'occursus'], # 677
     ['statuo', 'statuere', 'statui', 'statutus'], # 678
     ['edo', 'edere', 'edidi', 'editus'], # 688
-    ['lateo', 'latere', 'latui', ], # 695
+    ['lateo', 'latere', 'latui', None], # 695
     ['convenio', 'convenire', 'conveni', 'conventus'], # 698
     ['interficio', 'interficere', 'interfeci', 'interfectus'], # 699
     ['appello', 'appellare', 'appelavi', 'appellatus'], # 700
@@ -190,7 +190,7 @@ VERB_LIST = [
     ['probo', 'probare', 'probavi', 'probatus'], # 784
     ['doleo', 'dolere', 'dolui', 'dolitus'], # 785
     ['pecco', 'peccare', 'peccavi', 'peccatus'], # 792
-    ['accido', 'accidere', 'accidi', ], # 799
+    ['accido', 'accidere', 'accidi', None], # 799
     ['decerno', 'decernere', 'decrevi', 'decretus'], # 800
     ['occido', 'occidere', 'occidi', 'occisus'], # 801
     ['descendo', 'descendere', 'descendi', 'descensus'], # 802
@@ -209,7 +209,7 @@ VERB_LIST = [
     ['mereo', 'merere', 'merui', 'meritus'], # 852
     ['porto', 'portare', 'portavi', 'portatus'], # 853
     ['certo', 'certare', 'certavi', 'certatus'], # 864
-    ['pertineo', 'pertinere', 'pertinui', ], # 866
+    ['pertineo', 'pertinere', 'pertinui', None], # 866
     ['turbo', 'turbare', 'turbavi', 'turbatus'], # 868
     ['consumo', 'consumere', 'consumpsi', 'consumptus'], # 869
     ['corrumpo', 'corrumpere', 'corrupi', 'corruptus'], # 870
@@ -248,7 +248,7 @@ VERB_LIST = [
     ['adverto', 'advertere', 'adverti', 'adversus'], # 986
     ['advenio', 'advenire', 'adveni', 'adventus'], # 987
     ['pendo', 'pendere', 'pependi', 'pensus'], # 988
-    ['studeo', 'studere', 'studui', ], # 989
+    ['studeo', 'studere', 'studui', None], # 989
     ['ascendo', 'ascendere', 'ascendi', 'ascensus'], # 990
     ['reverto', 'revertere', 'reverti', 'reversus'], # 995
     ['edico', 'edicere', 'edixi', 'edictus'], # 996
