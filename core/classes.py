@@ -11,47 +11,46 @@ class RegularVerb:
 
     def __conj_1(self) -> bool:
         """
-        Check if any word in the list end in 'are'
+        Check if 2nd principal part end in 'are'
 
                 Returns: Boolean
         """
-        return any(x.endswith('are') for x in self.parts)
+        return self.parts[1].endswith('are')
 
     def __conj_2(self) -> bool:
         """
-        Check if any word in the list has an ending 'eo' and
-        any word in the list has an ending 'ere'
+        Check if 1st principal part ends with 'eo' and
+        2nd principal part ends in 'ere'
 
                 Returns: Boolean
         """
-        return any(x.endswith('eo') for x in self.parts) and any(x.endswith('ere') for x in self.parts)
+        return self.parts[0].endswith('eo') and self.parts[1].endswith('ere')
 
     def __conj_3(self) -> bool:
         """
-        Check if any word in the list has an ending 'ere' and
-        no word in the list has an ending 'eo' and
-        no word in the list has an ending 'io'
+        Check that 1st principal part doesn't end in 'eo' or 'io'
+        and that 2nd principal part ends in 'ere'
 
                 Returns: Boolean
         """
-        return not any(x.endswith('eo') for x in self.parts) and not any(x.endswith('io') for x in self.parts) and any(x.endswith('ere') for x in self.parts)
+        return not self.parts[0].endswith('eo') and not self.parts[0].endswith('io') and self.parts[1].endswith('ere')
 
     def __conj_3io(self) -> bool:
         """
-        Check if any word in the list has an ending 'io' and
-        any word in the list has an ending 'ere'
+        Check if 1st principal part ends in 'io' and
+        2nd principal part ends in 'ere'
 
                 Returns: Boolean
         """
-        return not any(x.endswith('eo') for x in self.parts) and any(x.endswith('ere') for x in self.parts)
+        return self.parts[0].endswith('io') and self.parts[1].endswith('ere')
 
     def __conj_4(self) -> bool:
         """
-        Check if any word in the list has an ending 'ire'
+        Check if 2nd principal part ends in 'ire'
 
                 Returns: Boolean
         """
-        return any(x.endswith('ire') for x in self.parts)
+        return self.parts[1].endswith('ire')
 
     def get_conjugation(self) -> str:
         """
@@ -224,5 +223,102 @@ class RegularVerb:
                 conjugated_verbs = [f'{self.parts[1][:-3]}i' + x for x in personal_endings_act_3_4]
             else:
                 conjugated_verbs = [f'{self.parts[1][:-3]}i' + x for x in personal_endings_pass_3_4]
+
+        return conjugated_verbs
+
+    def perfect_tense(self, is_indicative: bool, is_active: bool) -> list:
+        """
+        Return perfect tense of a regular verb, based on:
+
+                Parameters:
+                        `is_indicative` (bool): indicative (or subjunctive) mood
+                        `is_active` (bool): active (or passive) voice
+
+                Returns:
+                        `conjugated_verbs` (list): conjugated verb list
+        """
+
+        perf_act_ind_endings = ['i', 'isti', 'it', 'imus', 'istis', 'erunt/-ere']
+        perf_act_subj_endings = ['erim', 'eris', 'erit', 'erimus', 'eritis', 'erint']
+        sum_present_ind = ['sum', 'es', 'est', 'sumus', 'estis', 'sunt']
+        sum_present_subj = ['sim', 'sis', 'sit', 'simus', 'sitis', 'sint']
+
+        if is_indicative:
+            if is_active:
+                conjugated_verbs = [f'{self.parts[2][:-1]}' + x for x in perf_act_ind_endings]
+            else: # perf ind pass
+                if self.parts[3] == None:
+                    return f'{self.parts[0]} has no fourth principal part.'
+                else:
+                    conjugated_verbs = [f'{self.parts[3]}, -a, -um ' + x for x in sum_present_ind[:3]] + [f'{self.parts[3][:-2]}i, -ae, -a ' + x for x in sum_present_ind[3:]]
+
+        else: # subjunctive
+            if is_active:
+                conjugated_verbs = [f'{self.parts[2][:-1]}' + x for x in perf_act_subj_endings]
+            else: # perf subj pass
+                if self.parts[3] == None:
+                    return f'{self.parts[0]} has no fourth principal part.'
+                else:
+                    conjugated_verbs = [f'{self.parts[3]}, -a, -um ' + x for x in sum_present_subj[:3]] + [f'{self.parts[3][:-2]}i, -ae, -a ' + x for x in sum_present_subj[3:]]
+
+        return conjugated_verbs
+
+    def pluperfect_tense(self, is_indicative: bool, is_active: bool) -> list:
+        """
+        Return pluperfect tense of a regular verb, based on:
+
+                Parameters:
+                        `is_indicative` (bool): indicative (or subjunctive) mood
+                        `is_active` (bool): active (or passive) voice
+
+                Returns:
+                        `conjugated_verbs` (list): conjugated verb list
+        """
+
+        pluperf_act_ind_endings = ['eram', 'eras', 'erat', 'eramus', 'eratis', 'erant']
+        pluperf_act_subj_endings = ['issem', 'isses', 'isset', 'issemus', 'issetis', 'issent']
+        sum_impf_subj = ['essem', 'esses', 'esset', 'essemus', 'essetis', 'essent']
+
+        if is_indicative:
+            if is_active:
+                conjugated_verbs = [f'{self.parts[2][:-1]}' + x for x in pluperf_act_ind_endings]
+            else: # perf ind pass
+                if self.parts[3] == None:
+                    return f'{self.parts[0]} has no fourth principal part.'
+                else:
+                    conjugated_verbs = [f'{self.parts[3]}, -a, -um ' + x for x in pluperf_act_ind_endings[:3]] + [f'{self.parts[3][:-2]}i, -ae, -a ' + x for x in pluperf_act_ind_endings[3:]]
+
+        else: # subjunctive
+            if is_active:
+                conjugated_verbs = [f'{self.parts[2][:-1]}' + x for x in pluperf_act_subj_endings]
+            else: # perf subj pass
+                if self.parts[3] == None:
+                    return f'{self.parts[0]} has no fourth principal part.'
+                else:
+                    conjugated_verbs = [f'{self.parts[3]}, -a, -um ' + x for x in sum_impf_subj[:3]] + [f'{self.parts[3][:-2]}i, -ae, -a ' + x for x in sum_impf_subj[3:]]
+
+        return conjugated_verbs
+
+    def future_perfect_tense(self, is_active: bool) -> list:
+        """
+        Return pluperfect tense of a regular verb, based on:
+
+                Parameters:
+                        `is_active` (bool): active (or passive) voice
+
+                Returns:
+                        `conjugated_verbs` (list): conjugated verb list
+        """
+
+        futperf_act_ind_endings = ['ero', 'eris', 'erit', 'erimus', 'eritis', 'erint']
+        sum_fut = ['ero', 'eris', 'erit', 'erimus', 'eritis', 'erunt']
+
+        if is_active:
+            conjugated_verbs = [f'{self.parts[2][:-1]}' + x for x in futperf_act_ind_endings]
+        else: # fut perf ind pass
+            if self.parts[3] == None:
+                return f'{self.parts[0]} has no fourth principal part.'
+            else:
+                conjugated_verbs = [f'{self.parts[3]}, -a, -um ' + x for x in sum_fut[:3]] + [f'{self.parts[3][:-2]}i, -ae, -a ' + x for x in sum_fut[3:]]
 
         return conjugated_verbs
