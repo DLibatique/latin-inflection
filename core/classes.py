@@ -61,6 +61,77 @@ class RegularVerb:
         """
         return '1' if self.__conj_1() else ('2' if self.__conj_2() else ('3' if self.__conj_3() else ('3io' if self.__conj_3io() else '4')))
 
+    def get_infinitives(self) -> list:
+        """
+        Return a max of 6 infinitives.
+
+                Returns:
+                        `infinitives` (list): infinitives in the order pres act, pres pass,
+                            perf act, perf pass, fut act, fut pass
+        """
+
+        infinitives = []
+
+        # pres act inf
+        infinitives.append(self.parts[1])
+
+        # pres pass inf
+        if self.get_conjugation() in ['1', '2', '4']:
+            infinitives.append(f'{self.parts[1][:-1]}i')
+        else:
+            infinitives.append(f'{self.parts[1][:-3]}i')
+
+        # perf act inf
+
+        # semi-deponent
+        if ' ' in self.parts[2]:
+            infinitives.append(None)
+        # regular 3rd pp
+        else:
+            infinitives.append(f'{self.parts[2]}sse')
+
+        # perf pass inf
+
+        # semi-deponent
+        if ' ' in self.parts[2] and self.parts[3] == None:
+            infinitives.append(f'{self.parts[2][:-3]}esse')
+        # no 4th pp
+        elif not self.parts[3]:
+            infinitives.append(None)
+        # regular 4th pp
+        else:
+            infinitives.append(f'{self.parts[3]} esse')
+
+        # fut act inf
+
+        # semi-deponent
+        if ' ' in self.parts[2] and not self.parts[3]:
+            infinitives.append(f'{self.parts[2][:-5]}rus esse')
+        # regular 3rd pp but no 4th pp
+        elif not ' ' in self.parts[2] and not self.parts[3]:
+            infinitives.append(None)
+        # regular 4th pp
+        else:
+            infinitives.append(f'{self.parts[3][:-1]}rus esse')
+
+        # fut pass inf
+
+        # semi-deponent
+        if ' ' in self.parts[2] and not self.parts[3]:
+            infinitives.append(f'{self.parts[2][:-5]}m iri')
+        # regular 3rd pp but no 4th pp
+        elif not ' ' in self.parts[2] and not self.parts[3]:
+            infinitives.append(None)
+        # regular 4th pp
+        else:
+            infinitives.append(f'{self.parts[3][:-1]}m iri')
+
+        return infinitives
+
+
+    def get_participles(self):
+        pass
+
     def present_tense(self, mood: str, is_active: bool) -> list:
         """
         Return present tense of a regular verb, based on:
@@ -70,7 +141,8 @@ class RegularVerb:
                         `is_active` (bool): active (or passive) voice
 
                 Returns:
-                        `conjugated_verbs` (list): conjugated verb list
+                        `conjugated_verbs` (list): conjugated verb list in the order 1st sg., 2nd sg.,
+                            3rd sg., 1st pl., 2nd pl., 3rd pl.
         """
 
         # ending groups
@@ -164,7 +236,8 @@ class RegularVerb:
                         `is_active` (bool): active (or passive) voice
 
                 Returns:
-                        `conjugated_verbs` (list): conjugated verb list
+                        `conjugated_verbs` (list): conjugated verb list in the order 1st sg., 2nd sg.,
+                            3rd sg., 1st pl., 2nd pl., 3rd pl.
         """
         conjugated_verbs = []
 
@@ -191,7 +264,8 @@ class RegularVerb:
                         `is_active` (bool): active (or passive) voice
 
                 Returns:
-                        `conjugated_verbs` (list): conjugated verb list
+                        `conjugated_verbs` (list): conjugated verb list in the order 1st sg., 2nd sg.,
+                            3rd sg., 1st pl., 2nd pl., 3rd pl.
         """
 
         # ending groups
@@ -235,7 +309,8 @@ class RegularVerb:
                         `is_active` (bool): active (or passive) voice
 
                 Returns:
-                        `conjugated_verbs` (list): conjugated verb list
+                        `conjugated_verbs` (list): conjugated verb list in the order 1st sg., 2nd sg.,
+                            3rd sg., 1st pl., 2nd pl., 3rd pl.
         """
 
         perf_act_ind_endings = ['i', 'isti', 'it', 'imus', 'istis', 'erunt/-ere']
@@ -272,7 +347,8 @@ class RegularVerb:
                         `is_active` (bool): active (or passive) voice
 
                 Returns:
-                        `conjugated_verbs` (list): conjugated verb list
+                        `conjugated_verbs` (list): conjugated verb list in the order 1st sg., 2nd sg.,
+                            3rd sg., 1st pl., 2nd pl., 3rd pl.
         """
 
         pluperf_act_ind_endings = ['eram', 'eras', 'erat', 'eramus', 'eratis', 'erant']
@@ -283,7 +359,7 @@ class RegularVerb:
             if is_active:
                 conjugated_verbs = [f'{self.parts[2][:-1]}' + x for x in pluperf_act_ind_endings]
             else: # perf ind pass
-                if self.parts[3] == None:
+                if not self.parts[3]:
                     return f'{self.parts[0]} has no fourth principal part.'
                 else:
                     conjugated_verbs = [f'{self.parts[3]}, -a, -um ' + x for x in pluperf_act_ind_endings[:3]] + [f'{self.parts[3][:-2]}i, -ae, -a ' + x for x in pluperf_act_ind_endings[3:]]
@@ -307,7 +383,8 @@ class RegularVerb:
                         `is_active` (bool): active (or passive) voice
 
                 Returns:
-                        `conjugated_verbs` (list): conjugated verb list
+                        `conjugated_verbs` (list): conjugated verb list in the order 1st sg., 2nd sg.,
+                            3rd sg., 1st pl., 2nd pl., 3rd pl.
         """
 
         futperf_act_ind_endings = ['ero', 'eris', 'erit', 'erimus', 'eritis', 'erint']
