@@ -49,6 +49,22 @@ class TestConjugation(unittest.TestCase):
         self.assertEqual(RegularVerb(data[0][0]).future_tense(True), ['amabo', 'amabis', 'amabit', 'amabimus', 'amabitis', 'amabunt']) # fut ind act
         self.assertEqual(RegularVerb(data[0][0]).future_tense(False), ['amabor', 'amaberis', 'amabitur', 'amabimur', 'amabimini', 'amabuntur']) # fut ind pass
 
+        # perfect
+        self.assertEqual(RegularVerb(data[0][0]).perfect_tense(True, True), ['amavi', 'amavisti', 'amavit', 'amavimus', 'amavistis', 'amaverunt/-ere']) # perf ind act
+        self.assertEqual(RegularVerb(data[0][0]).perfect_tense(False, True), ['amaverim', 'amaveris', 'amaverit', 'amaverimus', 'amaveritis', 'amaverint']) # perf subj act
+        self.assertEqual(RegularVerb(data[0][0]).perfect_tense(True, False), ['amatus, -a, -um sum', 'amatus, -a, -um es', 'amatus, -a, -um est', 'amati, -ae, -a sumus', 'amati, -ae, -a estis', 'amati, -ae, -a sunt']) # perf ind pass
+        self.assertEqual(RegularVerb(data[0][0]).perfect_tense(False, False), ['amatus, -a, -um sim', 'amatus, -a, -um sis', 'amatus, -a, -um sit', 'amati, -ae, -a simus', 'amati, -ae, -a sitis', 'amati, -ae, -a sint']) # perf subj pass
+
+        # pluperfect
+        self.assertEqual(RegularVerb(data[0][0]).pluperfect_tense(True, True), ['amaveram', 'amaveras', 'amaverat', 'amaveramus', 'amaveratis', 'amaverant']) # pluperf ind act
+        self.assertEqual(RegularVerb(data[0][0]).pluperfect_tense(False, True), ['amavissem', 'amavisses', 'amavisset', 'amavissemus', 'amavissetis', 'amavissent']) # pluperf subj act
+        self.assertEqual(RegularVerb(data[0][0]).pluperfect_tense(True, False), ['amatus, -a, -um eram', 'amatus, -a, -um eras', 'amatus, -a, -um erat', 'amati, -ae, -a eramus', 'amati, -ae, -a eratis', 'amati, -ae, -a erant']) # pluperf ind pass
+        self.assertEqual(RegularVerb(data[0][0]).pluperfect_tense(False, False), ['amatus, -a, -um essem', 'amatus, -a, -um esses', 'amatus, -a, -um esset', 'amati, -ae, -a essemus', 'amati, -ae, -a essetis', 'amati, -ae, -a essent']) # pluperf subj pass
+
+        # future perfect
+        self.assertEqual(RegularVerb(data[0][0]).future_perfect_tense(True), ['amavero', 'amaveris', 'amaverit', 'amaverimus', 'amaveritis', 'amaverint']) # fut perf ind act
+        self.assertEqual(RegularVerb(data[0][0]).future_perfect_tense(False), ['amatus, -a, -um ero', 'amatus, -a, -um eris', 'amatus, -a, -um erit', 'amati, -ae, -a erimus', 'amati, -ae, -a eritis', 'amati, -ae, -a erunt']) # fut perf pass act
+
         # 2nd conj
 
         # present
