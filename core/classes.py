@@ -130,7 +130,54 @@ class RegularVerb:
 
 
     def get_participles(self):
-        pass
+        """
+        Return a max of 4 participles.
+
+                Returns:
+                        `participles` (list): participles in the order pres act, perf pass,
+                            fut act, and fut pass
+        """
+
+        participles = []
+
+        # present active
+        if self.get_conjugation() in ['1', '2', '3']:
+            participles.append(f'{self.parts[1][:-2]}ns, -ntis')
+        else: # 3rd io and 4th
+            participles.append(f'{self.parts[1][:-3]}iens, -ntis')
+
+        # perf pass
+
+        # semi-deponent
+        if ' ' in self.parts[2] and not self.parts[3]:
+            participles.append(f'{self.parts[2].split()[0]}, -a, -um')
+        # no 4th pp
+        elif not self.parts[3]:
+            participles.append(None)
+        # regular
+        else:
+            participles.append(f'{self.parts[3]}, -a, -um')
+
+        # fut act
+
+        # semi-deponent
+        if ' ' in self.parts[2] and not self.parts[3]:
+            participles.append(f'{self.parts[2].split()[0][:-1]}rus, -a, -um')
+        # no 4th pp
+        elif not self.parts[3]:
+            participles.append(None)
+        # regular
+        else:
+            participles.append(f'{self.parts[3][:-1]}rus, -a, -um')
+
+        # fut pass / gerundive
+        if self.get_conjugation() in ['1', '2', '3']:
+            participles.append(f'{self.parts[1][:-2]}ndus, -a, -um')
+        else: # 3rd io and 4th
+            participles.append(f'{self.parts[1][:-3]}iendus, -a, -um')
+
+        return participles
+
 
     def present_tense(self, mood: str, is_active: bool) -> list:
         """
