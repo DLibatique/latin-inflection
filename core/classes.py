@@ -6,6 +6,8 @@ class RegularVerb:
 
                 Parameters:
                         `parts` (list of str): list of principal parts
+                            - any missing principal parts must have
+                                a placeholder value of None
         """
         self.parts = parts
 
