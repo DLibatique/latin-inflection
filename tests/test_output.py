@@ -149,9 +149,22 @@ class TestConjugation(unittest.TestCase):
         self.assertEqual(RegularVerb(data[4][0]).future_tense(False), ['audiar', 'audieris', 'audietur', 'audiemur', 'audiemini', 'audientur']) # fut ind pass
 
         # infinitives
-        self.assertEqual(RegularVerb(['rego', 'regere', 'rexi', 'rectus']).get_infinitives(), ['regere', 'regi', 'rexisse', 'rectus esse', 'recturus esse', 'rectum iri']) # all 4 parts, completely regular
+        self.assertEqual(RegularVerb(data[0][0]).get_infinitives(), ['amare', 'amari', 'amavisse', 'amatus esse', 'amaturus esse', 'amatum iri']) # 1st conj., all parts
+        self.assertEqual(RegularVerb(data[1][0]).get_infinitives(), ['monere', 'moneri', 'monuisse', 'monitus esse', 'moniturus esse', 'monitum iri']) # 2nd conj., all parts
+        self.assertEqual(RegularVerb(data[2][0]).get_infinitives(), ['regere', 'regi', 'rexisse', 'rectus esse', 'recturus esse', 'rectum iri']) # 3rd conj., all parts
+        self.assertEqual(RegularVerb(data[3][0]).get_infinitives(), ['capere', 'capi', 'cepisse', 'captus esse', 'capturus esse', 'captum iri']) # 3rd io conj., all parts
+        self.assertEqual(RegularVerb(data[4][0]).get_infinitives(), ['audire', 'audiri', 'audivisse', 'auditus esse', 'auditurus esse', 'auditum iri']) # 4th conj., all parts
         self.assertEqual(RegularVerb(['gaudeo', 'gaudere', 'gavisus sum', None]).get_infinitives(), ['gaudere', 'gauderi', None, 'gavisus esse', 'gavisurus esse', 'gavisum iri']) # semi-deponent
         self.assertEqual(RegularVerb(['timeo', 'timere', 'timui', None]).get_infinitives(), ['timere', 'timeri', 'timuisse', None, None, None]) # missing 4th pp, regular 3rd pp
+
+        # participles
+        self.assertEqual(RegularVerb(data[0][0]).get_participles(), ['amans, -ntis', 'amatus, -a, -um', 'amaturus, -a, -um', 'amandus, -a, -um']) # 1st conj, regular
+        self.assertEqual(RegularVerb(data[1][0]).get_participles(), ['monens, -ntis', 'monitus, -a, -um', 'moniturus, -a, -um', 'monendus, -a, -um']) # 2nd conj, regular
+        self.assertEqual(RegularVerb(data[2][0]).get_participles(), ['regens, -ntis', 'rectus, -a, -um', 'recturus, -a, -um', 'regendus, -a, -um']) # 3rd conj, regular
+        self.assertEqual(RegularVerb(data[3][0]).get_participles(), ['capiens, -ntis', 'captus, -a, -um', 'capturus, -a, -um', 'capiendus, -a, -um']) # 3rd io conj, regular
+        self.assertEqual(RegularVerb(data[4][0]).get_participles(), ['audiens, -ntis', 'auditus, -a, -um', 'auditurus, -a, -um', 'audiendus, -a, -um']) # 4th conj, regular
+        self.assertEqual(RegularVerb(['gaudeo', 'gaudere', 'gavisus sum', None]).get_participles(), ['gaudens, -ntis', 'gavisus, -a, -um', 'gavisurus, -a, -um', 'gaudendus, -a, -um']) # semi-deponent
+        self.assertEqual(RegularVerb(['timeo', 'timere', 'timui', None]).get_participles(), ['timens, -ntis', None, None, 'timendus, -a, -um']) # missing 4th pp, regular 3rd pp
 
 if __name__ == "__main__":
     unittest.main()
