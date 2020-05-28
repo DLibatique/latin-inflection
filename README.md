@@ -1,4 +1,4 @@
-# Latin Verb Quiz
+# Latin Inflection
 
 ## Script Running
 
